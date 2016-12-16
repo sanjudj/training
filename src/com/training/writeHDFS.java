@@ -9,7 +9,7 @@ import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.util.GenericOptionsParser;
+
 
 public class writeHDFS {
 
@@ -17,6 +17,8 @@ public class writeHDFS {
 		// TODO Auto-generated method stub
 
 		Configuration conf = new Configuration();
+		conf.addResource(new Path("F://trainingHadoop//core-site.xml"));
+		conf.addResource(new Path("F://trainingHadoop//hdfs-site.xml"));
 		
 		//String otherArgs[] = new GenericOptionsParser(args).getRemainingArgs();
 		
@@ -24,12 +26,12 @@ public class writeHDFS {
 		
 		//String hdfsFile = otherArgs[1];
 		
-		String localFile = "F:\\firstClass.txt";
-		String hdfsFile = "hdfs://ec2-52-4-131-21.compute-1.amazonaws.com:50070/trainingHadoop";
+		String localFile = "F://firstClass.txt";
+		String hdfsFile = "hdfs://ec2-52-7-109-1.compute-1.amazonaws.com:50070/trainingHadoop1";
 		
 		FileSystem local = FileSystem.getLocal(conf);
 		
-		FileSystem hdfs = FileSystem.get(new URI("hdfs://ec2-52-4-131-21.compute-1.amazonaws.com:8020"), conf);
+		FileSystem hdfs = FileSystem.get(new URI("hdfs://ec2-52-7-109-1.compute-1.amazonaws.com:8020"), conf);
 		
 		FSDataInputStream in = local.open(new Path(localFile));
 		

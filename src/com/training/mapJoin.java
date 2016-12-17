@@ -22,10 +22,12 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 
 public class mapJoin {
+	
 	public static final String filePath = "/trainingHadoop/userlog/user.log";
 	
 	public static class mapJoinMapper extends Mapper<LongWritable,Text,Text,Text>{
 		Map<String, String> user = null;
+		
 		public void setup(Context context) throws IOException{
 			
 			loadKeys(context);

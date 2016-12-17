@@ -8,6 +8,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Partitioner;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -54,6 +55,38 @@ public class wordCount {
 	   }
 	   
    }
+   
+   
+   public static class wordCountPartitioner extends Partitioner<Text,LongWritable>{
+	   
+	   public int getPartition(Text key, LongWritable value, int numReducePartitions){
+		   
+		   String partKey = key.toString();
+		   
+		  if(numReducePartitions == 0){
+			  return 0;
+		  }
+		   
+		  if(partKey.startsWith("A")){
+			  
+			  return 0;
+			  
+		  }else if(partKey.startsWith("Z")){
+			  
+			  return 1 % numReducePartitions;
+			  
+		  }else if(partKey.startsWith("(")){
+			  
+			  return 2 % numReducePartitions;
+			  
+		  }else {
+			  
+			  return 3 % numReducePartitions;
+		  }
+		   	   
+		   
+	   }
+   }
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub
 
@@ -71,8 +104,8 @@ public class wordCount {
     	job.setOutputFormatClass(TextOutputFormat.class);
     	FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
-		
-		job.setNumReduceTasks(2);
+		job.setPartitionerClass(wordCountPartitioner.class);
+	//	job.setNumReduceTasks(4);
 		System.exit(job.waitForCompletion(true)?0:1);
 		
 				

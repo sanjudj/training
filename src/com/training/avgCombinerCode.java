@@ -1,22 +1,16 @@
 package com.training;
 
 import java.io.IOException;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
-
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-
-
-
 import org.apache.hadoop.mapreduce.Reducer;
 
 public class avgCombinerCode {
@@ -30,7 +24,7 @@ public class avgCombinerCode {
 			String stockVol = strLine[6];
 			
 			context.write(new Text("key"), new Text(stockVol));
-			
+	
 				
 		}
 		
@@ -58,11 +52,9 @@ public class avgCombinerCode {
 			
 			context.write(new Text("A_C"), new Text(average + '_' + Long.toString(count)));
 			
-			
-		}
-		
-		
 	}
+		
+ }
 	
 	public static class avgCombinerCodeReducer extends Reducer<Text,Text,Text,Text>{
 		

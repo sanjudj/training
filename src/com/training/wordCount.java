@@ -14,6 +14,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.partition.InputSampler;
 
 public class wordCount {
 	
@@ -92,7 +93,6 @@ public class wordCount {
 
 		Configuration conf = new Configuration();
 		Job job = new Job(conf,"word count");
-		
 		job.setJarByClass(wordCount.class);
 		job.setMapperClass(wordCountMapper.class);
 		job.setReducerClass(wordCountReducer.class);

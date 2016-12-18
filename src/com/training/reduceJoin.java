@@ -70,13 +70,11 @@ public class reduceJoin {
     				Arr1.add(val.toString().split("\\|")[1]);
     			}else{
     				
-    				Arr2.add(val.toString().split("\\|")[1]);
+    				Arr2.add(val.toString().split("\\|")[0]);
     			}
     			   		
-    			
-    			
-    		}
-    		toVal = toVal +  Arr1.toString() + '|' + Arr2.toString();
+    	}
+    		toVal = Arr1.toString() + '|' + Arr2.toString();
     		context.write(key, new Text(toVal));
     	}
        	
@@ -97,9 +95,7 @@ public class reduceJoin {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(Text.class);
 		System.exit(job.waitForCompletion(true)?0:1);
-		
-		
-		
+					
 	}
 
 }

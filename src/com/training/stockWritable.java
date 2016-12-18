@@ -7,8 +7,15 @@ import org.apache.hadoop.io.Writable;
 
 public class stockWritable implements Writable {
 
-	double open = 0.0;
-	double high = 0.0;
+	Double open = 0.0;
+	Double high = 0.0;
+	//public stockWritable(double x, double y) {
+		// TODO Auto-generated constructor stub
+		
+		//open = x;
+		//high = y;
+	//}
+
 	@Override
 	public void readFields(DataInput in) throws IOException {
 		// TODO Auto-generated method stub
@@ -24,7 +31,7 @@ public class stockWritable implements Writable {
 		
 		
 		out.writeDouble(open);
-		out.writeDouble(high);;
+		out.writeDouble(high);
 	}
 
 	

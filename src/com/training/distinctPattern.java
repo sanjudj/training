@@ -1,7 +1,6 @@
 package com.training;
 
 import java.io.IOException;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
@@ -28,7 +27,6 @@ public class distinctPattern {
 			long num = Long.parseLong(val);
 			
 			context.write(new LongWritable(num), NullWritable.get());
-		
 			
 		}
 				
@@ -61,8 +59,6 @@ public class distinctPattern {
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
 		
-		
-
 	}
 
 }

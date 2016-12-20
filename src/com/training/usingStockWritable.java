@@ -22,12 +22,10 @@ public class usingStockWritable {
 			
 			String[] strLine = value.toString().split(",");
 			
-			String stock = strLine[2] + strLine[3];
+			//String stock = strLine[2] + strLine[3];
 			
-			double open = Double.parseDouble(strLine[2]);
-			double high = Double.parseDouble(strLine[3]);
-			emitKey.setOpen(Double.valueOf(open));
-			emitKey.setHigh(Double.valueOf(high));
+			emitKey.setOpen(Double.valueOf(strLine[2]));
+			emitKey.setHigh(Double.valueOf(strLine[3]));
 			context.write(emitKey, value);
 		}
 		

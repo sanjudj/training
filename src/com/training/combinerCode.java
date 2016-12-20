@@ -25,9 +25,8 @@ public class combinerCode {
 			String[] strLine = value.toString().split(",");
 			String stockCode = strLine[1];
 			long stockVolume = Long.parseLong(strLine[6]);
-			
 			context.write(new Text(stockCode), new LongWritable(stockVolume));
-						
+					
 		}
 	}
 	

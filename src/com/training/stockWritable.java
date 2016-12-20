@@ -7,8 +7,8 @@ import org.apache.hadoop.io.Writable;
 
 public class stockWritable implements Writable {
 
-	Double open = 0.0;
-	Double high = 0.0;
+	double open = 0.0;
+	double high = 0.0;
 	//public stockWritable(double x, double y) {
 		// TODO Auto-generated constructor stub
 		

@@ -72,16 +72,12 @@ public class usingStockWritable {
 		job.setReducerClass(usingStockWritableReducer.class);
 		job.setOutputKeyClass(IntWritable.class);
 		job.setOutputValueClass(DoubleWritable.class);
-		
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		System.exit(job.waitForCompletion(true) ? 0 : 1);
-		
-		
-
-		
+			
 	}
 
 }

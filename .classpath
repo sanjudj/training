@@ -25,7 +25,6 @@
 	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-ant-1.2.1.jar"/>
 	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-capacity-scheduler-1.2.1.jar"/>
 	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-client-1.2.1.jar"/>
-	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-core-1.2.1.jar"/>
 	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-examples-1.2.1.jar"/>
 	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-fairscheduler-1.2.1.jar"/>
 	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-minicluster-1.2.1.jar"/>
@@ -58,5 +57,6 @@
 	<classpathentry kind="lib" path="F:/Onehadoop/twitter4j.jar"/>
 	<classpathentry kind="lib" path="F:/Onehadoop/twitter4j-core-2.2.0-sources.jar"/>
 	<classpathentry kind="lib" path="F:/Onehadoop/xmlenc-0.52.jar"/>
+	<classpathentry kind="lib" path="F:/Onehadoop/hadoop-core-1.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

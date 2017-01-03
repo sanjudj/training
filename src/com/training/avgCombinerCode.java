@@ -87,6 +87,7 @@ public class avgCombinerCode {
 		}
 		
 	}
+	
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub

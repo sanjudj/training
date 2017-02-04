@@ -10,21 +10,46 @@ public class test {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
-		int counter = 0;
-		BufferedWriter br0 = null;
-		File file = new File("F:\\trainingHadoop\\duplicateNumber2.txt");
-		br0 = new BufferedWriter(new FileWriter(file));
+	int arr[] = {5,1,4,2,8};
+	int n = arr.length;
+	int temp = 0;
+	
+	for(int i = 0; i < n; i++){
 		
-		for(int i = 0; i < 10000; i++){
+		for(int j = 1; j < (n - 1); j++){
 			
-			counter = counter + i;
-			br0.write(Integer.toString(counter));
-			br0.newLine();
-			
+			if(arr[j - 1] > arr[j]){
+				
+				temp       = arr[j - 1];
+				arr[j - 1] = arr[j];
+				arr[j]     = temp;
+				
+			}
 		}
 		
-		br0.close();
+
 		
+	}
+	for(int m = 0; m < n; m++){
+		System.out.println(arr[m]);
+	}
+	
+	
+	int number = 17654;
+	int reverse = 0;
+	
+	while(number != 0){
+		
+		System.out.println(reverse * 10);
+		System.out.println(number % 10);
+		reverse = (reverse * 10) + (number % 10);
+		
+		number = number / 10;
+		System.out.println(number);
+	}
+		
+	
+	//System.out.println(reverse);
 	}
 
 }

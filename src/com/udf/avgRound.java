@@ -1,0 +1,81 @@
+package com.udf;
+
+import org.apache.hadoop.hive.ql.exec.UDAF;
+import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
+import org.apache.hadoop.hive.serde2.io.DoubleWritable;
+
+
+public class avgRound extends UDAF {
+	
+	public static class avgRoundEvaluator implements UDAFEvaluator {
+		
+		public static class PartialResult {
+			double sum;
+			int count;
+		}
+
+		private PartialResult partial;
+		
+		
+		@Override
+		public void init() {
+			// TODO Auto-generated method stub
+		
+			partial = null;
+		}
+		
+		public boolean iterate(DoubleWritable value){
+			
+			if(value == null){
+			return true;
+			}
+			
+			if(partial == null){
+				partial = new PartialResult();
+			}
+			
+			partial.sum += value.get();
+			partial.count++;
+			
+			return true;
+			
+		}
+		
+		public PartialResult terminatePartial(){
+			return partial;
+		}
+		
+		public boolean merge(PartialResult other){
+			
+			if(other == null){
+			return true;
+			}
+			
+			if(partial == null){
+				
+				partial = new PartialResult();
+			}
+			
+			partial.sum += other.sum;
+			partial.count += other.count;
+			
+			return true;
+			
+		}
+		
+		public DoubleWritable terminate(){
+			
+			if(partial == null){
+				return null;
+			}
+			
+			double x = (partial.sum/partial.count);
+			double y = Math.round(x);
+			return new DoubleWritable(y);
+		}
+		
+	}
+	
+	
+
+}

@@ -91,7 +91,7 @@ public class globalSort {
 		FileOutputFormat.setOutputPath(job, new Path(otherArgs[1]));		
 		
 		InputSampler.writePartitionFile(job, sampler);
-		new Path(otherArgs[1]).getFileSystem(job).delete(new Path(otherArgs[1]), true);
+		//new Path(otherArgs[1]).getFileSystem(job).delete(new Path(otherArgs[1]), true);
 		JobClient.runJob(job);
 	}
 }
